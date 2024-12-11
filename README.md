@@ -22,7 +22,7 @@
 ## Overview
 
 We propose a **Weight Diffusion (W-Diff)** approach, which is specialized for the evolving domain generalization (EDG) in the domain-incremental setting. W-Diff capitalizes on the strong modeling ability of diffusion models to capture the evolving pattern of optimized classifiers across domains.
-![image](./Figures/Fig_W-Diff.jpg)
+![image](./Figures/Fig_W-Diff.JPG)
 
 ## Prerequisites Installation
 
