@@ -1,0 +1,121 @@
+2024-11-23 16:02:48,304 main INFO: PTL.version = 9.2.0
+2024-11-23 16:02:48,304 main INFO: torch.version = 1.9.1+cu111
+2024-11-23 16:02:48,305 main INFO: torchvision.version = 0.10.1+cu111
+2024-11-23 16:02:48,305 main INFO: Running with config:
+{'random_seed': 1, 'device': 6, 'data': {'data_dir': '/mnt/bit/data/wildtime/ONP', 'dataset': 'ONP', 'mini_batch_size': 64, 'num_workers': 4, 'init_timestamp': 0, 'split_time': 4}, 'trainer': {'method': 'wdiff', 'epochs': 50, 'lr': 0.0001, 'momentum': 0.9, 'weight_decay': 0.0, 'reduction': 'mean', 'dim_bottleneck_f': None, 'L': 8, 'M': 32, 'Mg': 32, 'warm_up': 0.2, 'inner_iters_DM': 10, 'Lambda': 10.0}, 'DM': {'target': 'networks.diffusion.ddpm.LatentDiffusion', 'params': {'base_learning_rate': 0.0005, 'linear_start': 0.0015, 'linear_end': 0.0195, 'num_timesteps_cond': 1, 'log_every_t': 200, 'timesteps': 1000, 'cond_stage_key': 'class_label', 'image_size': 1, 'channels': 3, 'cond_stage_trainable': True, 'conditioning_key': 'hybrid', 'monitor': 'val/loss_simple_ema', 'unet_config': {'target': 'networks.diffusion.modules.openaimodel.UNetModel', 'params': {'dims': 2, 'width': 128, 'in_channels': 3, 'out_channels': 1, 'model_channels': 64, 'attention_resolutions': [2, 1], 'num_res_blocks': 1, 'channel_mult': [1, 2], 'num_groups': 32, 'num_head_channels': 32, 'use_spatial_transformer': True, 'transformer_depth': 1, 'context_dim': 128}}, 'cond_stage_config': {'target': 'networks.diffusion.modules.encoders.ClassEmbedder', 'params': {'embed_dim': 64, 'n_classes': 2}}}}, 'lightning': {'callbacks': {'image_logger': {'target': 'main.ImageLogger', 'params': {'batch_frequency': 5000, 'max_images': 8, 'increase_log_steps': False}}}, 'trainer': {'benchmark': True}}, 'log': {'print_freq': 500, 'log_dir': './checkpoints/onp/', 'log_name': 'log.txt'}}
+2024-11-23 16:02:53,426 main INFO: DiffusionWrapper has 15.51 M params.
+2024-11-23 16:02:53,644 main INFO: -------------------start training on timestamp 0-------------------
+2024-11-23 16:02:53,645 main INFO: self.train_dataset.num_batches = 7049 // 64 = 110
+2024-11-23 16:02:53,676 main INFO: eta: 0:02:48  timestamp: 0  [iter: 0/5500]  loss_ce: 0.99091375 (0.99091375)  total_loss: 0.99091375 (0.99091375)  time: 0.03054953 (0.03054953)  max mem: 0.12 GB
+2024-11-23 16:02:54,057 main INFO: [0/5500]  ID timestamp = 0: 	 validation accuracy: 50.319
+2024-11-23 16:02:55,039 main INFO: eta: 0:00:13  timestamp: 0  [iter: 500/5500]  loss_ce: 0.77964580 (0.77553338)  total_loss: 0.77964580 (0.77553338)  time: 0.00189638 (0.00278102)  max mem: 0.12 GB
+2024-11-23 16:02:56,011 main INFO: eta: 0:00:10  timestamp: 0  [iter: 1000/5500]  loss_ce: 0.64279884 (0.72404571)  total_loss: 0.64279884 (0.72404571)  time: 0.00202942 (0.00236304)  max mem: 0.12 GB
+2024-11-23 16:02:56,668 main INFO: [1100/5500]  ID timestamp = 0: 	 validation accuracy: 62.520
+2024-11-23 16:02:57,474 main INFO: eta: 0:00:10  timestamp: 0  [iter: 1500/5500]  loss_ce: 0.73850757 (0.70148633)  total_loss: 0.73850757 (0.70148633)  time: 0.00292397 (0.00254998)  max mem: 0.12 GB
+2024-11-23 16:02:58,465 main INFO: eta: 0:00:08  timestamp: 0  [iter: 2000/5500]  loss_ce: 0.58744508 (0.68743506)  total_loss: 0.58744508 (0.68743506)  time: 0.00187373 (0.00240814)  max mem: 0.12 GB
+2024-11-23 16:02:59,305 main INFO: [2200/5500]  ID timestamp = 0: 	 validation accuracy: 64.392
+2024-11-23 16:02:59,917 main INFO: eta: 0:00:07  timestamp: 0  [iter: 2500/5500]  loss_ce: 0.60317558 (0.67757396)  total_loss: 0.60317558 (0.67757396)  time: 0.00192332 (0.00250726)  max mem: 0.12 GB
+2024-11-23 16:03:00,913 main INFO: eta: 0:00:06  timestamp: 0  [iter: 3000/5500]  loss_ce: 0.66724992 (0.66879374)  total_loss: 0.66724992 (0.66879374)  time: 0.00201774 (0.00242145)  max mem: 0.12 GB
+2024-11-23 16:03:02,047 main INFO: [3300/5500]  ID timestamp = 0: 	 validation accuracy: 65.343
+2024-11-23 16:03:02,430 main INFO: eta: 0:00:05  timestamp: 0  [iter: 3500/5500]  loss_ce: 0.59934103 (0.66109410)  total_loss: 0.59934103 (0.66109410)  time: 0.00187969 (0.00250868)  max mem: 0.12 GB
+2024-11-23 16:03:03,422 main INFO: eta: 0:00:03  timestamp: 0  [iter: 4000/5500]  loss_ce: 0.66519690 (0.65501393)  total_loss: 0.66519690 (0.65501393)  time: 0.00184631 (0.00244319)  max mem: 0.12 GB
+2024-11-23 16:03:04,638 main INFO: [4400/5500]  ID timestamp = 0: 	 validation accuracy: 66.676
+2024-11-23 16:03:04,832 main INFO: eta: 0:00:02  timestamp: 0  [iter: 4500/5500]  loss_ce: 0.58074123 (0.64974600)  total_loss: 0.58074123 (0.64974600)  time: 0.00189710 (0.00248503)  max mem: 0.12 GB
+2024-11-23 16:03:05,798 main INFO: eta: 0:00:01  timestamp: 0  [iter: 5000/5500]  loss_ce: 0.59042025 (0.64529185)  total_loss: 0.59042025 (0.64529185)  time: 0.00179553 (0.00242957)  max mem: 0.12 GB
+2024-11-23 16:03:06,781 main INFO: eta: 0:00:00  timestamp: 0  [iter: 5500/5500]  loss_ce: 0.62772959 (0.64158351)  total_loss: 0.62772959 (0.64158351)  time: 0.00122786 (0.00238743)  max mem: 0.12 GB
+2024-11-23 16:03:07,237 main INFO: [5500/5500]  ID timestamp = 0: 	 validation accuracy: 67.598
+2024-11-23 16:03:07,237 main INFO: -------------------end training on timestamp 0-------------------
+2024-11-23 16:03:07,718 main INFO: ID timestamp = 0: 	 validation accuracy is 67.598
+2024-11-23 16:03:08,043 main INFO: -------------------start training on timestamp 1-------------------
+2024-11-23 16:03:08,045 main INFO: self.train_dataset.num_batches = 5952 // 64 = 93
+2024-11-23 16:03:08,056 main INFO: eta: 0:00:47  timestamp: 1  [iter: 0/4650]  loss_ce: 0.65682268 (0.65682268)  loss_con: -0.00001001 (-0.00001001)  total_loss: 0.65672255 (0.65672255)  time: 0.01027203 (0.01027203)  max mem: 0.12 GB
+2024-11-23 16:03:08,389 main INFO: [0/4650]  ID timestamp = 1: 	 validation accuracy: 58.317
+2024-11-23 16:03:09,719 main INFO: eta: 0:00:13  timestamp: 1  [iter: 500/4650]  loss_ce: 0.67315102 (0.63325243)  loss_con: 0.00356933 (0.00416707)  total_loss: 0.70884430 (0.67492316)  time: 0.00259280 (0.00333953)  max mem: 0.12 GB
+2024-11-23 16:03:11,399 main INFO: [930/4650]  ID timestamp = 1: 	 validation accuracy: 66.599
+2024-11-23 16:03:54,062 main INFO: eta: 0:02:47  timestamp: 1  [iter: 1000/4650]  loss_ce: 0.61152548 (0.62504867)  loss_con: 0.00406487 (0.00415946)  total_loss: 0.65217417 (0.66664324)  time: 1.16315341 (0.04597048)  loss_diff: 0.00743942 (0.04965111)  max mem: 0.47 GB
+2024-11-23 16:11:58,384 main INFO: eta: 0:18:32  timestamp: 1  [iter: 1500/4650]  loss_ce: 0.65730166 (0.61924230)  loss_con: 0.00374981 (0.00389370)  total_loss: 0.69479972 (0.65817927)  time: 0.93077135 (0.35332296)  loss_diff: 0.00015961 (0.00434779)  max mem: 0.47 GB
+2024-11-23 16:17:47,468 main INFO: [1860/4650]  ID timestamp = 1: 	 validation accuracy: 68.095
+2024-11-23 16:20:02,418 main INFO: eta: 0:22:23  timestamp: 1  [iter: 2000/4650]  loss_ce: 0.59664583 (0.61450140)  loss_con: 0.00185209 (0.00353157)  total_loss: 0.61516672 (0.64981714)  time: 0.98470020 (0.50693214)  loss_diff: 0.00012237 (0.00233595)  max mem: 0.47 GB
+2024-11-23 16:28:06,081 main INFO: eta: 0:21:27  timestamp: 1  [iter: 2500/4650]  loss_ce: 0.52318144 (0.60962279)  loss_con: 0.00177780 (0.00320543)  total_loss: 0.54095942 (0.64167710)  time: 0.92797160 (0.59897420)  loss_diff: 0.00018623 (0.00161712)  max mem: 0.47 GB
+2024-11-23 16:32:52,458 main INFO: [2790/4650]  ID timestamp = 1: 	 validation accuracy: 68.935
+2024-11-23 16:36:30,978 main INFO: eta: 0:18:21  timestamp: 1  [iter: 3000/4650]  loss_ce: 0.57730722 (0.60625399)  loss_con: 0.00140335 (0.00291471)  total_loss: 0.59134072 (0.63540111)  time: 1.03073382 (0.66742102)  loss_diff: 0.00004024 (0.00124511)  max mem: 0.47 GB
+2024-11-23 16:45:21,050 main INFO: eta: 0:13:52  timestamp: 1  [iter: 3500/4650]  loss_ce: 0.63103527 (0.60307505)  loss_con: 0.00132365 (0.00266163)  total_loss: 0.64427173 (0.62969134)  time: 1.07828188 (0.72350810)  loss_diff: 0.00003157 (0.00101508)  max mem: 0.47 GB
+2024-11-23 16:49:16,489 main INFO: [3720/4650]  ID timestamp = 1: 	 validation accuracy: 69.489
+2024-11-23 16:54:19,622 main INFO: eta: 0:08:19  timestamp: 1  [iter: 4000/4650]  loss_ce: 0.54051089 (0.59976472)  loss_con: 0.00088399 (0.00245580)  total_loss: 0.54935074 (0.62432274)  time: 1.24298501 (0.76770144)  loss_diff: 0.00001066 (0.00086024)  max mem: 0.47 GB
+2024-11-23 17:03:27,671 main INFO: eta: 0:02:00  timestamp: 1  [iter: 4500/4650]  loss_ce: 0.52015716 (0.59673280)  loss_con: 0.00090714 (0.00228247)  total_loss: 0.52922857 (0.61955747)  time: 1.08072925 (0.80418176)  loss_diff: 0.00005849 (0.00074807)  max mem: 0.47 GB
+2024-11-23 17:06:13,815 main INFO: [4650/4650]  ID timestamp = 1: 	 validation accuracy: 70.245
+2024-11-23 17:06:13,816 main INFO: -------------------end training on timestamp 1-------------------
+2024-11-23 17:06:14,450 main INFO: sample_count=5952
+2024-11-23 17:06:30,549 main INFO: ID timestamp = 1: 	 validation accuracy is 70.296
+2024-11-23 17:06:30,970 main INFO: -------------------start training on timestamp 2-------------------
+2024-11-23 17:06:30,971 main INFO: self.train_dataset.num_batches = 5724 // 64 = 89
+2024-11-23 17:06:30,979 main INFO: eta: 0:00:31  timestamp: 2  [iter: 0/4450]  loss_ce: 0.59414417 (0.59414417)  loss_con: 0.00052585 (0.00052585)  total_loss: 0.59940261 (0.59940261)  time: 0.00700569 (0.00700569)  max mem: 0.47 GB
+2024-11-23 17:06:31,377 main INFO: [0/4450]  ID timestamp = 2: 	 validation accuracy: 63.365
+2024-11-23 17:06:32,801 main INFO: eta: 0:00:14  timestamp: 2  [iter: 500/4450]  loss_ce: 0.61767954 (0.62830468)  loss_con: 0.00066567 (0.00083315)  total_loss: 0.62433624 (0.63663615)  time: 0.00268769 (0.00365025)  max mem: 0.47 GB
+2024-11-23 17:06:34,427 main INFO: [890/4450]  ID timestamp = 2: 	 validation accuracy: 66.667
+2024-11-23 17:08:00,112 main INFO: eta: 0:05:07  timestamp: 2  [iter: 1000/4450]  loss_ce: 0.53604102 (0.61814416)  loss_con: 0.00064605 (0.00077091)  total_loss: 0.54250151 (0.62585323)  time: 1.08577991 (0.08905019)  loss_diff: 0.00018368 (0.00025361)  max mem: 0.47 GB
+2024-11-23 17:16:59,838 main INFO: eta: 0:20:35  timestamp: 2  [iter: 1500/4450]  loss_ce: 0.61167520 (0.61140904)  loss_con: 0.00061204 (0.00074189)  total_loss: 0.61779559 (0.61882794)  time: 1.09644771 (0.41896386)  loss_diff: 0.00006476 (0.00009173)  max mem: 0.47 GB
+2024-11-23 17:21:59,940 main INFO: [1780/4450]  ID timestamp = 2: 	 validation accuracy: 68.047
+2024-11-23 17:25:54,414 main INFO: eta: 0:23:44  timestamp: 2  [iter: 2000/4450]  loss_ce: 0.69145483 (0.60646856)  loss_con: 0.00084540 (0.00073047)  total_loss: 0.69990879 (0.61377330)  time: 1.01689243 (0.58142957)  loss_diff: 0.00001604 (0.00007783)  max mem: 0.47 GB
+2024-11-23 17:34:57,444 main INFO: eta: 0:22:10  timestamp: 2  [iter: 2500/4450]  loss_ce: 0.58860958 (0.60237455)  loss_con: 0.00055200 (0.00072441)  total_loss: 0.59412956 (0.60961862)  time: 1.16266084 (0.68231511)  loss_diff: 0.00004510 (0.00007038)  max mem: 0.47 GB
+2024-11-23 17:37:59,371 main INFO: [2670/4450]  ID timestamp = 2: 	 validation accuracy: 69.305
+2024-11-23 17:43:53,736 main INFO: eta: 0:18:03  timestamp: 2  [iter: 3000/4450]  loss_ce: 0.57513446 (0.59848480)  loss_con: 0.00199021 (0.00071802)  total_loss: 0.59503657 (0.60566498)  time: 1.18497014 (0.74733802)  loss_diff: 0.00005315 (0.00006625)  max mem: 0.47 GB
+2024-11-23 17:53:01,461 main INFO: eta: 0:12:37  timestamp: 2  [iter: 3500/4450]  loss_ce: 0.46572137 (0.59508413)  loss_con: 0.00072459 (0.00071463)  total_loss: 0.47296727 (0.60223046)  time: 1.08617616 (0.79705399)  loss_diff: 0.00003528 (0.00006234)  max mem: 0.47 GB
+2024-11-23 17:54:07,533 main INFO: [3560/4450]  ID timestamp = 2: 	 validation accuracy: 70.248
+2024-11-23 18:02:04,071 main INFO: eta: 0:06:14  timestamp: 2  [iter: 4000/4450]  loss_ce: 0.56045127 (0.59154757)  loss_con: 0.00080161 (0.00071428)  total_loss: 0.56846738 (0.59869039)  time: 1.07586360 (0.83306566)  loss_diff: 0.00003145 (0.00005954)  max mem: 0.47 GB
+2024-11-23 18:10:02,525 main INFO: [4450/4450]  ID timestamp = 2: 	 validation accuracy: 71.069
+2024-11-23 18:10:02,525 main INFO: -------------------end training on timestamp 2-------------------
+2024-11-23 18:10:03,146 main INFO: sample_count=5724
+2024-11-23 18:10:35,227 main INFO: ID timestamp = 2: 	 validation accuracy is 70.929
+2024-11-23 18:10:35,605 main INFO: -------------------start training on timestamp 3-------------------
+2024-11-23 18:10:35,606 main INFO: self.train_dataset.num_batches = 6356 // 64 = 99
+2024-11-23 18:10:35,612 main INFO: eta: 0:00:26  timestamp: 3  [iter: 0/4950]  loss_ce: 0.66377759 (0.66377759)  loss_con: 0.00102967 (0.00102967)  total_loss: 0.67407423 (0.67407423)  time: 0.00535917 (0.00535917)  max mem: 0.47 GB
+2024-11-23 18:10:36,000 main INFO: [0/4950]  ID timestamp = 3: 	 validation accuracy: 64.097
+2024-11-23 18:10:37,374 main INFO: eta: 0:00:15  timestamp: 3  [iter: 500/4950]  loss_ce: 0.54815149 (0.61544985)  loss_con: 0.00104554 (0.00104909)  total_loss: 0.55860686 (0.62594076)  time: 0.00246811 (0.00352606)  max mem: 0.47 GB
+2024-11-23 18:10:39,197 main INFO: [990/4950]  ID timestamp = 3: 	 validation accuracy: 67.448
+2024-11-23 18:10:39,230 main INFO: eta: 0:00:14  timestamp: 3  [iter: 1000/4950]  loss_ce: 0.69609171 (0.60872671)  loss_con: 0.00088751 (0.00101470)  total_loss: 0.70496678 (0.61887366)  time: 0.00306749 (0.00361879)  max mem: 0.47 GB
+2024-11-23 18:20:38,958 main INFO: eta: 0:23:06  timestamp: 3  [iter: 1500/4950]  loss_ce: 0.56249791 (0.60529803)  loss_con: 0.00099035 (0.00101111)  total_loss: 0.57240146 (0.61540913)  time: 1.23899698 (0.40196520)  loss_diff: 0.00001343 (0.00005834)  max mem: 0.47 GB
+2024-11-23 18:30:51,557 main INFO: [1980/4950]  ID timestamp = 3: 	 validation accuracy: 68.424
+2024-11-23 18:31:16,872 main INFO: eta: 0:30:29  timestamp: 3  [iter: 2000/4950]  loss_ce: 0.69220179 (0.60132251)  loss_con: 0.00073388 (0.00097774)  total_loss: 0.69954056 (0.61109988)  time: 1.31447840 (0.62032165)  loss_diff: 0.00001632 (0.00004989)  max mem: 0.47 GB
+2024-11-23 18:41:54,305 main INFO: eta: 0:30:40  timestamp: 3  [iter: 2500/4950]  loss_ce: 0.55361807 (0.59758817)  loss_con: 0.00051237 (0.00094653)  total_loss: 0.55874175 (0.60705347)  time: 1.30037308 (0.75117803)  loss_diff: 0.00002129 (0.00004795)  max mem: 0.47 GB
+2024-11-23 18:51:46,549 main INFO: [2970/4950]  ID timestamp = 3: 	 validation accuracy: 69.525
+2024-11-23 18:52:26,062 main INFO: eta: 0:27:11  timestamp: 3  [iter: 3000/4950]  loss_ce: 0.57852626 (0.59415165)  loss_con: 0.00080187 (0.00092315)  total_loss: 0.58654493 (0.60338320)  time: 1.28379464 (0.83653853)  loss_diff: 0.00000839 (0.00004617)  max mem: 0.47 GB
+2024-11-23 19:03:11,156 main INFO: eta: 0:21:46  timestamp: 3  [iter: 3500/4950]  loss_ce: 0.59258163 (0.59088586)  loss_con: 0.00077466 (0.00090868)  total_loss: 0.60032821 (0.59997269)  time: 1.29034257 (0.90132693)  loss_diff: 0.00002742 (0.00004503)  max mem: 0.47 GB
+2024-11-23 19:12:34,426 main INFO: [3960/4950]  ID timestamp = 3: 	 validation accuracy: 70.390
+2024-11-23 19:13:24,300 main INFO: eta: 0:14:54  timestamp: 3  [iter: 4000/4950]  loss_ce: 0.56985015 (0.58770287)  loss_con: 0.00117521 (0.00089396)  total_loss: 0.58160228 (0.59664248)  time: 1.18140793 (0.94193697)  loss_diff: 0.00005566 (0.00004373)  max mem: 0.47 GB
+2024-11-23 19:23:49,553 main INFO: eta: 0:07:19  timestamp: 3  [iter: 4500/4950]  loss_ce: 0.53299993 (0.58476249)  loss_con: 0.00066529 (0.00088857)  total_loss: 0.53965288 (0.59364820)  time: 1.26157951 (0.97621467)  loss_diff: 0.00000385 (0.00004207)  max mem: 0.47 GB
+2024-11-23 19:33:22,495 main INFO: [4950/4950]  ID timestamp = 3: 	 validation accuracy: 70.831
+2024-11-23 19:33:22,496 main INFO: -------------------end training on timestamp 3-------------------
+2024-11-23 19:33:23,156 main INFO: sample_count=6356
+2024-11-23 19:34:12,297 main INFO: ID timestamp = 3: 	 validation accuracy is 70.925
+2024-11-23 19:34:12,690 main INFO: -------------------start training on timestamp 4-------------------
+2024-11-23 19:34:12,692 main INFO: self.train_dataset.num_batches = 7334 // 64 = 114
+2024-11-23 19:34:12,699 main INFO: eta: 0:00:37  timestamp: 4  [iter: 0/5700]  loss_ce: 0.68474615 (0.68474615)  loss_con: 0.00079840 (0.00079840)  total_loss: 0.69273019 (0.69273019)  time: 0.00665522 (0.00665522)  max mem: 0.47 GB
+2024-11-23 19:34:13,099 main INFO: [0/5700]  ID timestamp = 4: 	 validation accuracy: 66.021
+2024-11-23 19:34:14,469 main INFO: eta: 0:00:18  timestamp: 4  [iter: 500/5700]  loss_ce: 0.71044791 (0.61105415)  loss_con: 0.00101196 (0.00088519)  total_loss: 0.72056758 (0.61990601)  time: 0.00263286 (0.00354538)  max mem: 0.47 GB
+2024-11-23 19:34:15,833 main INFO: eta: 0:00:14  timestamp: 4  [iter: 1000/5700]  loss_ce: 0.58140117 (0.60591809)  loss_con: 0.00067545 (0.00082486)  total_loss: 0.58815569 (0.61416672)  time: 0.00269222 (0.00313680)  max mem: 0.47 GB
+2024-11-23 19:34:16,779 main INFO: [1140/5700]  ID timestamp = 4: 	 validation accuracy: 68.980
+2024-11-23 19:41:21,459 main INFO: eta: 0:19:59  timestamp: 4  [iter: 1500/5700]  loss_ce: 0.63232541 (0.59982557)  loss_con: 0.00062660 (0.00079737)  total_loss: 0.63859141 (0.60779930)  time: 1.25089812 (0.28565353)  loss_diff: 0.00009875 (0.00006393)  max mem: 0.47 GB
+2024-11-23 19:52:02,616 main INFO: eta: 0:32:58  timestamp: 4  [iter: 2000/5700]  loss_ce: 0.51631612 (0.59498152)  loss_con: 0.00078632 (0.00079092)  total_loss: 0.52417928 (0.60289073)  time: 1.29763651 (0.53469377)  loss_diff: 0.00001063 (0.00004762)  max mem: 0.47 GB
+2024-11-23 19:58:01,786 main INFO: [2280/5700]  ID timestamp = 4: 	 validation accuracy: 69.907
+2024-11-23 20:02:44,245 main INFO: eta: 0:36:29  timestamp: 4  [iter: 2500/5700]  loss_ce: 0.51166576 (0.59132330)  loss_con: 0.00078938 (0.00078025)  total_loss: 0.51955956 (0.59912576)  time: 1.28450751 (0.68434638)  loss_diff: 0.00001193 (0.00004386)  max mem: 0.47 GB
+2024-11-23 20:13:23,848 main INFO: eta: 0:35:15  timestamp: 4  [iter: 3000/5700]  loss_ce: 0.58017498 (0.58736457)  loss_con: 0.00060724 (0.00077901)  total_loss: 0.58624738 (0.59515467)  time: 1.26145458 (0.78345671)  loss_diff: 0.00004612 (0.00004252)  max mem: 0.47 GB
+2024-11-23 20:22:25,478 main INFO: [3420/5700]  ID timestamp = 4: 	 validation accuracy: 70.998
+2024-11-23 20:24:07,500 main INFO: eta: 0:31:21  timestamp: 4  [iter: 3500/5700]  loss_ce: 0.57409459 (0.58354662)  loss_con: 0.00066266 (0.00077653)  total_loss: 0.58072120 (0.59131195)  time: 1.28818083 (0.85541398)  loss_diff: 0.00000417 (0.00004090)  max mem: 0.47 GB
+2024-11-23 20:34:53,964 main INFO: eta: 0:25:47  timestamp: 4  [iter: 4000/5700]  loss_ce: 0.46688801 (0.58007224)  loss_con: 0.00078574 (0.00077464)  total_loss: 0.47474545 (0.58781863)  time: 1.41038179 (0.91008942)  loss_diff: 0.00000705 (0.00003958)  max mem: 0.47 GB
+2024-11-23 20:45:21,598 main INFO: eta: 0:18:58  timestamp: 4  [iter: 4500/5700]  loss_ce: 0.60692710 (0.57706190)  loss_con: 0.00091424 (0.00077541)  total_loss: 0.61606956 (0.58481600)  time: 1.23250365 (0.94843401)  loss_diff: 0.00003389 (0.00003840)  max mem: 0.47 GB
+2024-11-23 20:46:35,849 main INFO: [4560/5700]  ID timestamp = 4: 	 validation accuracy: 71.898
+2024-11-23 20:55:56,964 main INFO: eta: 0:11:26  timestamp: 4  [iter: 5000/5700]  loss_ce: 0.58772916 (0.57395066)  loss_con: 0.00071145 (0.00077813)  total_loss: 0.59484363 (0.58173197)  time: 1.31785059 (0.98065739)  loss_diff: 0.00005797 (0.00003817)  max mem: 0.47 GB
+2024-11-23 21:06:34,506 main INFO: eta: 0:03:21  timestamp: 4  [iter: 5500/5700]  loss_ce: 0.59007001 (0.57134492)  loss_con: 0.00076080 (0.00078250)  total_loss: 0.59767801 (0.57916992)  time: 1.29958916 (1.00741851)  loss_diff: 0.00007816 (0.00003765)  max mem: 0.47 GB
+2024-11-23 21:10:53,526 main INFO: [5700/5700]  ID timestamp = 4: 	 validation accuracy: 72.593
+2024-11-23 21:10:53,526 main INFO: -------------------end training on timestamp 4-------------------
+2024-11-23 21:10:54,188 main INFO: sample_count=7334
+2024-11-23 21:11:59,242 main INFO: ID timestamp = 4: 	 validation accuracy is 72.539
+2024-11-23 21:11:59,243 main INFO: average of validation accuracy is 70.457
+2024-11-23 21:11:59,770 main INFO: 
+=================================== Results (Eval-Fix) ===================================
+2024-11-23 21:12:00,611 main INFO: sample_count=32415
+2024-11-23 21:13:21,487 main INFO: Merged ID validation data: accuracy: 	65.605
+
+2024-11-23 21:13:21,908 main INFO: sample_count=7229
+2024-11-23 21:14:43,541 main INFO: OOD timestamp = 5: 	 accuracy is 67.091

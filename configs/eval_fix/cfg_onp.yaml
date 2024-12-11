@@ -1,0 +1,94 @@
+random_seed: 1  # 'random seed number'
+device: 0       # 'gpu id'
+
+
+data:
+  data_dir: '/mnt/bit/data/wildtime/ONP'  # 'directory for datasets.'
+  dataset: 'ONP'
+  mini_batch_size: 64  # 'mini batch size for SGD'
+  num_workers: 4       # 'number of workers in data generator'
+  init_timestamp: 0
+  split_time: 4        # 'timestep to split ID vs OOD'
+
+
+# Training hyperparameters
+trainer:
+  method: 'wdiff'
+  epochs: 50     # training epochs for each timestamp
+  lr: 1e-4       # learning rate for the task model
+  momentum: 0.9  # 'momentum'
+  weight_decay: 0.0  # 'weight decay'
+  reduction: 'mean'
+  dim_bottleneck_f: None  # dim for the bottlenecked features
+  L: 8    # maximum length of reference_point_queue
+  M: 32   # maximum length of anchor_point_and_prototype_queue
+  Mg: 32  # number of generated residual weights via diffusion model
+  warm_up: 0.2        # controls the warmup stage of task model
+  inner_iters_DM: 10  # inner iterations for updating diffusion model
+  Lambda: 10.0
+
+  
+# Diffusion Model
+DM:
+  target: networks.diffusion.ddpm.LatentDiffusion
+  params:
+    base_learning_rate: 5e-4
+    linear_start: 0.0015
+    linear_end: 0.0195
+    num_timesteps_cond: 1
+    log_every_t: 200
+    timesteps: 1000
+    cond_stage_key: class_label
+    image_size: 1
+    channels: 3
+    cond_stage_trainable: true
+    conditioning_key: hybrid
+    monitor: val/loss_simple_ema
+    unet_config:
+      target: networks.diffusion.modules.openaimodel.UNetModel
+      params:
+        dims: 2
+        width: 128 # feature_dim
+        in_channels: 3
+        out_channels: 1
+        model_channels: 64
+        attention_resolutions:
+        #note: this isn\t actually the resolution but
+        # the downsampling factor, i.e. this corresnponds to
+        # attention on spatial resolution 8,16,32, as the
+        # spatial reolution of the latents is 32 for f8
+        - 2
+        - 1
+        num_res_blocks: 1
+        channel_mult:
+        - 1
+        - 2
+        num_groups: 32
+        num_head_channels: 32
+        use_spatial_transformer: true
+        transformer_depth: 1
+        context_dim: 128 #  feature_dim
+    cond_stage_config:
+      target: networks.diffusion.modules.encoders.ClassEmbedder
+      params:
+        embed_dim: 64
+        n_classes: 2
+
+
+lightning:
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 5000
+        max_images: 8
+        increase_log_steps: False
+  trainer:
+    benchmark: True
+
+
+# Logging saving and testing options
+log:
+  print_freq: 500   # print frequency
+  log_dir: './checkpoints/onp/'
+  log_name: 'log.txt'  # name of log file
